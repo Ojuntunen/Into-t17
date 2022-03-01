@@ -13,7 +13,7 @@ router.get('/:id?',
       }
     });
   } else {
-    user.getAll(function(err, dbResult) {
+    user.get(function(err, dbResult) {
       if (err) {
         response.json(err);
       } else {
@@ -22,27 +22,24 @@ router.get('/:id?',
     });
   }
 });
-
-
 router.post('/', 
 function(request, response) {
-  user.add(request.body, function(err, dbResult) {
+  user.add(request.body, function(err, count) {
     if (err) {
       response.json(err);
     } else {
-      response.json(request.body);
+      response.json(request.body); 
     }
   });
 });
 
-
 router.delete('/:id', 
 function(request, response) {
-  user.delete(request.params.id, function(err, dbResult) {
+  user.delete(request.params.id, function(err, count) {
     if (err) {
       response.json(err);
     } else {
-      response.json(dbResult);
+      response.json(count);
     }
   });
 });
