@@ -2,8 +2,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const basicAuth = require('express-basic-auth');
 
 var app = express();
+app.use(basicAuth({users: { 'admin': '1234' }}))
 
 app.use(logger('dev'));
 app.use(express.json());
